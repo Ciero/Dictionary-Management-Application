@@ -1,0 +1,84 @@
+.container {
+    margin: 4rem;
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 2(1fr);
+    grid-template-rows: 3fr auto;
+    align-self: center;
+}
+.jumbotron{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    color: rgb(78, 78, 78);
+    display: flex;
+    background-color: transparent;
+}
+.jumbotron i {
+    margin-left: 2rem;
+    font-size: 4rem;
+    color:#2B96FE;
+}
+
+.searchBar {
+    padding-top: 50px;
+    grid-row: 2/3;
+    height: 200px;
+}
+.searchText{
+    margin-right:2rem;
+    font-size: 2rem;
+    font-weight: 300;
+    color: rgb(78, 78, 78);
+}
+.form-control{
+    border-radius: 4px;
+    color: rgb(48, 48, 48);
+    background-color: rgb(243, 243, 243);
+
+}
+.dictionary{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    
+}
+.add {
+    font-size: 3rem;
+    background-color: transparent;
+    color: #2B96FE;
+}
+.del-btn{
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: 0;
+    background-color: transparent;
+    color: rgb(245, 71, 86);
+    padding-top: 0.5rem;
+}
+.del{
+    align-content: center;
+    vertical-align: middle;
+}
+table #theadText{
+    font-style: normal;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgb(78, 78, 78);
+}
+#editableCell{
+    vertical-align: middle;
+}
+input{
+    padding: 0;
+}
+.arrow{
+    color: rgb(78, 78, 78);
+    text-align: center;
+    padding-top: 1.4rem;
+}
+.errorMsg {
+    text-align: center;
+    color: rgb(245, 71, 86);
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+  }
