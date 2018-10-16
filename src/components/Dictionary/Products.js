@@ -60,8 +60,7 @@ class Products extends Component {
       id: id,
       name: "",
       domain: "",
-      range: "",
-      error:""
+      range: ""
     }
     this.state.products.push(product);
     console.log(this.state.product)
@@ -69,6 +68,7 @@ class Products extends Component {
   }
 
   handleProductTable(evt) {
+    console.log("entered()");
     const item = {
       id: evt.target.id,
       name: evt.target.name,
@@ -76,17 +76,46 @@ class Products extends Component {
     };
     const products = this.state.products;
     const newProducts = products.map(function(product) {
-      for (const key in product) {
-        if (key === item.name && product.id === item.id) {
-          product.id = item.id;
-          product[key] = item.value;
-        } 
-          else if(item.value===products[0].domain || item.value===products[1].domain || item.value===products[2].domain){
-          return alert('The '+ item.value + ' domain is already exist.');
-        } else if(item.value===products[0].range || item.value===products[1].range || item.value===products[2].range){
-          return alert('The '+ item.value + ' is already a Range, you dont have to transelate it');
-        }   
-      }return product;
+
+
+
+      console.log("product id: " + product.id + ", product name: " + product.name + ", product domain: " + product.domain + ", product range: " + product.range);
+      console.log("item.id: " + item.id + ", item.name: " + item.name + ",item.value: " + item.value);
+      // item.name - name vagy domain vagy range
+      console.log("test: " + product[item.name]);
+
+      if (item.name==="name") {
+        // we are currently editing the name field
+        console.log("Ignore name column");
+        if (product.id===item.id) {
+          product[item.name]=item.value;
+          return product;
+        }
+      } else if (item.name==="domain") {
+        // we are currently editing the domain field
+        if (product.domain===item.value && product.range!=="") {
+          alert("The '" + item.value + "' domain is already exist.");
+          item.value = "";
+          return product;
+        } else if (product.range===item.value && product.range!=="") {
+          alert("The '" + item.value + "' domain is already defined as a range.");
+          item.value = "";
+          return product;
+        } else if (product.id===item.id) {
+          product.domain = item.value;
+          return product;
+        }
+      } else if (item.name==="range") {
+        // we are currently editing the range field
+        if (product.domain===item.value && product.range!==""){
+          alert("The '" + item.value + "' range is a domain.");
+          item.value = "";
+          return product;
+        }else if (product.id===item.id) {
+          product.range = item.value;
+          return product;
+        }
+      }
     });
     this.setState(newProducts);
     console.log(this.state.products);
