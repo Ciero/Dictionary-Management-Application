@@ -9,7 +9,12 @@ class SearchBar extends Component {
       return (
         <div className="searchBar input-group mb-3">
           <h3 className="searchText">Search dictionary: </h3>
-          <input type="text" className="form-control" placeholder="Search..." value={this.props.filterText} ref="filterTextInput" onChange={this.handleChange.bind(this)}/>
+          <input type="text" 
+            className="form-control" 
+            placeholder="Search..." 
+            value={this.props.filterText} 
+            ref="filterTextInput" 
+            onChange={this.handleChange.bind(this)}/>
         </div>
   
       );

@@ -1,47 +1,47 @@
 import React, {Component} from 'react';
 import SearchBar from '../SearchBar';
+import ShowTable from '../ShowTable'
 import Table from '../Table';
 import Jumbotron from '../Jumbotron'
+import Button from '../Button'
 import './products.css';
 
 
 class Products extends Component {
   constructor(props) {
     super(props);
-    //  this.state.dictionary = [];
     this.state= {
     };
     this.state.filterText = "";
     this.state.products = [
       {
         id: 1,
-        name: 'color',
+        name: 'Color',
         domain: 'Stonegrey',
         range: 'Dark Grey',
-        error: null,
-        
       }, {
         id: 2,
-        name: 'color',
+        name: 'Color',
         domain: 'Midnight Black',
         range: 'Black',
-        error: null,
-        
       }, {
         id: 3,
-        name: 'color',
+        name: 'Color',
         domain: 'Mystic Silver',
-        range: 'Silver',
-        error: null,
-        
+        range: 'Silver', 
+      }, 
+      {
+        id: 4,
+        name: 'Material',
+        domain: 'Stainless Steel',
+        range: 'Chromium',   
+      }, {
+        id: 5,
+        name: 'Material',
+        domain: 'Wrought Iron',
+        range: 'Iron',  
       }, 
     ];
-  }
-  renderError() {
-    if (!this.state.products.error) {
-      return null;
-    }
-    return <div>{this.state.products.error}</div>;
   }
 
   handleUserInput(filterText) {
@@ -55,6 +55,7 @@ class Products extends Component {
   };
 
   handleAddEvent(evt) {
+    // this.setState({filterText:""});
     const id = (Math.floor(Math.random() * 999999)).toString(36);
     const product = {
       id: id,
@@ -66,9 +67,8 @@ class Products extends Component {
     console.log(this.state.product)
     this.setState(this.state.products);
   }
-
+ 
   handleProductTable(evt) {
-    console.log("entered()");
     const item = {
       id: evt.target.id,
       name: evt.target.name,
@@ -76,13 +76,6 @@ class Products extends Component {
     };
     const products = this.state.products;
     const newProducts = products.map(function(product) {
-
-
-
-      console.log("product id: " + product.id + ", product name: " + product.name + ", product domain: " + product.domain + ", product range: " + product.range);
-      console.log("item.id: " + item.id + ", item.name: " + item.name + ",item.value: " + item.value);
-      // item.name - name vagy domain vagy range
-      console.log("test: " + product[item.name]);
 
       if (item.name==="name") {
         // we are currently editing the name field
@@ -118,25 +111,39 @@ class Products extends Component {
       }
     });
     this.setState(newProducts);
-    console.log(this.state.products);
   };
 
+  handleClickButton(name){
+    // const products = this.state.products.filter(p=>p.name === name)
+    this.setState({filterText:name})
+  }
   render() {
     return (
       <div className="container">
         <Jumbotron />
-        <SearchBar 
+        {/* <SearchBar 
           filterText={this.state.filterText} 
-          onUserInput={this.handleUserInput.bind(this)}/>
+          onUserInput={this.handleUserInput.bind(this)}/> */}
+        <Button 
+          clickButton={this.handleClickButton.bind(this)} 
+          products={this.state.products} 
+          value = 'text'
+        />
+        <ShowTable 
+          onProductTableUpdate={this.handleProductTable.bind(this)} 
+          onRowAdd={this.handleClickButton.bind(this)}
+          onRowDel={this.handleRowDel.bind(this)} 
+          products={this.state.products} 
+          filterText={this.state.filterText}
+          clickAddButton={this.handleClickButton.bind(this)}/>
         <Table 
           onProductTableUpdate={this.handleProductTable.bind(this)} 
           onRowAdd={this.handleAddEvent.bind(this)} 
           onRowDel={this.handleRowDel.bind(this)} 
           products={this.state.products} 
-          filterText={this.state.filterText}/>
-        <div className="errorMsg">
-          {this.renderError()}
-        </div>
+          filterText={this.state.filterText}
+          />
+
       </div>
     );
 

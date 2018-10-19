@@ -1,17 +1,7 @@
 import React, {Component} from 'react';
 import './Dictionary/products.css'
-// import Products from './Dictionary/Products'
 
 class EditableCell extends Component {
-
-//   handleChange(e){    
-//     //alert("cell name: " + e.target.name + ", call value: " + e.target.value);
-//     //let p = this.state.products;
-//     //p[product] = e.target.value;        
-//     //this.setState({products});
-    
-// }
-
     render() {
       return (
         <td id="editableCell">

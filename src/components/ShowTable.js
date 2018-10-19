@@ -3,26 +3,26 @@ import Row from './Row';
 import './Dictionary/products.css';
 
 
-class Table extends Component {
+class ShowTable extends Component {
   render() {
     const onProductTableUpdate = this.props.onProductTableUpdate;
     const rowDel = this.props.onRowDel;
+    const filterText = this.props.filterText;
     const product = this.props.products.map(function(product) {
-      if (product.range === ''){
-        return (<Row onProductTableUpdate={onProductTableUpdate} 
-          product={product} 
-          onDelEvent={rowDel.bind(this)} 
-          key={product.id}/>)
+      if (product.name.indexOf(filterText) === -1) {
+        return null;
       }
-      return null; 
+      return (<Row 
+        onProductTableUpdate={onProductTableUpdate} 
+        product={product} 
+        onDelEvent={rowDel.bind(this)} 
+        key={product.id}/>
+        
+        )
     });
     return (
-      <div className="createtable">
-        <h3 className="searchText">Add a new dictionary: </h3>
-      <div className="dictionary">
-        <button type="button" onClick={this.props.onRowAdd} className="btn add">
-              <i className="fa fa-plus" aria-hidden="true"></i>
-        </button>
+      <div>
+      <div className="showdictionary">
         <table className="table">
           <thead id="theadText">
             <tr>
@@ -43,4 +43,4 @@ class Table extends Component {
   }
   
 }
-export default Table ;
+export default ShowTable ;

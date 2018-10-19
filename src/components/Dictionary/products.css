@@ -24,6 +24,7 @@
     padding-top: 50px;
     grid-row: 2/3;
     height: 200px;
+    align-items: center;
 }
 .searchText{
     margin-right:2rem;
@@ -38,6 +39,7 @@
 
 }
 .dictionary{
+    margin-top: 3rem;
     display: grid;
     grid-template-columns: 1fr 4fr;
     
@@ -81,4 +83,15 @@ input{
     color: rgb(245, 71, 86);
     padding-left: 1rem;
     padding-top: 0.5rem;
-  }
+}
+.dict {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    margin-right: 3rem;
+    border-color: rgb(78, 78, 78);;
+    color: rgb(78, 78, 78);
+    font-size: 1.3rem;
+}
+.createtable{
+    margin-top: 2rem;
+}
