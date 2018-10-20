@@ -60,9 +60,7 @@ class Products extends Component {
   };
   handleAddRowToTable(product){
     product.add=true;
-
-    // const add = this.state.product.add;
-    // this.setState( { add: true } );
+    this.setState(this.state.products);
   }
 
   handleAddEvent(evt) {
