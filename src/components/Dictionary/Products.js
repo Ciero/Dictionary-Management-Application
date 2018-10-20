@@ -19,27 +19,32 @@ class Products extends Component {
         name: 'Color',
         domain: 'Stonegrey',
         range: 'Dark Grey',
+        add: true,
       }, {
         id: 2,
         name: 'Color',
         domain: 'Midnight Black',
         range: 'Black',
+        add: true,
       }, {
         id: 3,
         name: 'Color',
         domain: 'Mystic Silver',
         range: 'Silver', 
+        add: true,
       }, 
       {
         id: 4,
         name: 'Material',
         domain: 'Stainless Steel',
-        range: 'Chromium',   
+        range: 'Chromium', 
+        add: true,  
       }, {
         id: 5,
         name: 'Material',
         domain: 'Wrought Iron',
-        range: 'Iron',  
+        range: 'Iron',
+        add: true,  
       }, 
     ];
   }
@@ -53,21 +58,27 @@ class Products extends Component {
     this.state.products.splice(index, 1);
     this.setState(this.state.products);
   };
+  handleAddRowToTable(product){
+    product.add=true;
+
+    // const add = this.state.product.add;
+    // this.setState( { add: true } );
+  }
 
   handleAddEvent(evt) {
-    // this.setState({filterText:""});
+    //this.setState({filterText:""});
     const id = (Math.floor(Math.random() * 999999)).toString(36);
     const product = {
       id: id,
       name: "",
       domain: "",
-      range: ""
+      range: "",
+      add:false,
     }
     this.state.products.push(product);
     console.log(this.state.product)
     this.setState(this.state.products);
   }
- 
   handleProductTable(evt) {
     const item = {
       id: evt.target.id,
@@ -140,6 +151,7 @@ class Products extends Component {
           onProductTableUpdate={this.handleProductTable.bind(this)} 
           onRowAdd={this.handleAddEvent.bind(this)} 
           onRowDel={this.handleRowDel.bind(this)} 
+          addRowToTable={this.handleAddRowToTable.bind(this)}
           products={this.state.products} 
           filterText={this.state.filterText}
           />

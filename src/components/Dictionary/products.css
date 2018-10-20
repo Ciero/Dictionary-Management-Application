@@ -57,6 +57,17 @@
     color: rgb(245, 71, 86);
     padding-top: 0.5rem;
 }
+.ok-btn{
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: 0;
+    background-color: transparent;
+    color: #2B96FE;
+    padding-top: 0.5rem;
+}
+.ok-btn:hover{
+    color: rgb(78, 78, 78);
+}
 .del{
     align-content: center;
     vertical-align: middle;

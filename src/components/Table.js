@@ -2,17 +2,21 @@ import React, {Component} from 'react';
 import Row from './Row';
 import './Dictionary/products.css';
 
-
 class Table extends Component {
   render() {
     const onProductTableUpdate = this.props.onProductTableUpdate;
     const rowDel = this.props.onRowDel;
+    const addRowToTable = this.props.addRowToTable;
     const product = this.props.products.map(function(product) {
-      if (product.range === ''){
-        return (<Row onProductTableUpdate={onProductTableUpdate} 
+
+      if (!product.add) {
+        return (
+          <Row onProductTableUpdate={onProductTableUpdate} 
           product={product} 
+          addRowToTable={addRowToTable.bind(this)}
           onDelEvent={rowDel.bind(this)} 
-          key={product.id}/>)
+          key={product.id}/>
+          )
       }
       return null; 
     });
